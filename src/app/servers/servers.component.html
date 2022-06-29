@@ -1,2 +1,10 @@
-<app-server></app-server>
-<app-server></app-server>
+<label>Add User Name</label>
+<input
+    type="text"
+    class="form-control"
+    [(ngModel)]="username"
+    (input)="onUserInput()">
+<p>Your entered username is {{username}}</p>    
+<button class="btn btn-primary"
+[disabled] = "!allowReset"
+(click)="resetUser()">Reset Username</button>
