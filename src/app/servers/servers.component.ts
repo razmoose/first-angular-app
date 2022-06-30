@@ -10,21 +10,40 @@ export class ServersComponent implements OnInit {
   allowReset = false;
   serverCreationStatus = 'No server created';
   username = '';
-  constructor() { 
+  isReset=false;
+  showPara=false;
+  servers = ['testserver','testserver2'];
+  buttonLog=[2];
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
+  togglePara(){
+    if (this.showPara===false)
+      this.showPara=true;
+      else
+      this.showPara=false;
+  }
 
+  logClick($event:Event){
+    this.buttonLog.push($event.timeStamp);
+  }
 
   onUserInput(){
     this.allowReset=true;
+    this.isReset=false;
   }
 
   resetUser(){
     this.username= '';
     this.allowReset=false;
+    this.isReset=true;
+  }
+
+  addServer(){
+    this.servers.push(this.username);
   }
 
 

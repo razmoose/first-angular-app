@@ -4,7 +4,12 @@
     class="form-control"
     [(ngModel)]="username"
     (input)="onUserInput()">
-<p>Your entered username is {{username}}</p>    
+<p>Your entered username is {{username}}</p>
 <button class="btn btn-primary"
 [disabled] = "!allowReset"
-(click)="resetUser()">Reset Username</button>
+(click)="resetUser(); addServer()">Reset Username</button>
+<p *ngIf="isReset">The username has been reset</p>
+<app-server *ngFor="let server of servers"></app-server>
+<button (click)="togglePara(); logClick($event)" class="btn btn-primary">Log Details</button>
+<p *ngIf="showPara">Congrats on seeing the hidden section</p>
+<p [ngStyle]="{'background-color':i>4? 'blue' : 'white'}" [ngClass]="{logColor: i>4}"*ngFor="let log of buttonLog;let i=index">{{log}}</p>
